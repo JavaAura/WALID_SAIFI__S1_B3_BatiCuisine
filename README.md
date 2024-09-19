@@ -1,1 +1,0 @@
-# WALID_SAIFI__S1_B3_BatiCuisine
