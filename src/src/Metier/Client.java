@@ -1,9 +1,10 @@
+
 package Metier;
 
 public class Client {
     private String nom;
-    private  String adresse;
-    private  String telephone;
+    private String adresse;
+    private String telephone;
     private boolean estProfessionnel;
 
     public Client(String adresse, String nom, String telephone, boolean estProfessionnel) {
@@ -14,7 +15,7 @@ public class Client {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setNom(String nom) {
@@ -22,7 +23,7 @@ public class Client {
     }
 
     public String getAdresse() {
-        return adresse;
+        return this.adresse;
     }
 
     public void setAdresse(String adresse) {
@@ -30,7 +31,7 @@ public class Client {
     }
 
     public String getTelephone() {
-        return telephone;
+        return this.telephone;
     }
 
     public void setTelephone(String telephone) {
@@ -38,7 +39,7 @@ public class Client {
     }
 
     public boolean isEstProfessionnel() {
-        return estProfessionnel;
+        return this.estProfessionnel;
     }
 
     public void setEstProfessionnel(boolean estProfessionnel) {
