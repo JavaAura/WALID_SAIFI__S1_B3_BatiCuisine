@@ -21,7 +21,7 @@ public class MainOeuvreRepository implements  IMainOeuvreRepository{
         try (Connection conn = DBConnection.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            // Remplacement des paramètres de la requête
+
             stmt.setString(1, mainOeuvre.getNom());
             stmt.setDouble(2, mainOeuvre.getTauxHoraire());
             stmt.setDouble(3, mainOeuvre.getHeuresTravail());
@@ -29,7 +29,7 @@ public class MainOeuvreRepository implements  IMainOeuvreRepository{
             stmt.setDouble(5, mainOeuvre.getTauxTVA());
             stmt.setInt(6, idProject); // Utilisation de idProject pour l'insertion
 
-            // Exécution de la requête
+        
             stmt.executeUpdate();
             System.out.println("Main d'oeuvre ajoutée avec succès.");
 
