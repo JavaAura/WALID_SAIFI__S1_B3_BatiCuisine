@@ -7,6 +7,10 @@ public class Materiel extends Composant {
     private double coutTransport;
     private double coefficientQualite;
 
+    public Materiel() {
+
+    }
+
     public double getCoutTransport() {
         return coutTransport;
     }

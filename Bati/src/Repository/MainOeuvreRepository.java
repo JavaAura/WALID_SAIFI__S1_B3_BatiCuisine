@@ -27,9 +27,10 @@ public class MainOeuvreRepository implements  IMainOeuvreRepository{
             stmt.setDouble(3, mainOeuvre.getHeuresTravail());
             stmt.setDouble(4, mainOeuvre.getProductiviteOuvrier());
             stmt.setDouble(5, mainOeuvre.getTauxTVA());
-            stmt.setInt(6, idProject); // Utilisation de idProject pour l'insertion
+            stmt.setInt(6, idProject);
 
-        
+
+
             stmt.executeUpdate();
             System.out.println("Main d'oeuvre ajoutée avec succès.");
 
