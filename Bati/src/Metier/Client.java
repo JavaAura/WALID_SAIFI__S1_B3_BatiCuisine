@@ -13,6 +13,9 @@ public class Client {
         this.telephone = telephone;
         this.estProfessionnel = estProfessionnel;
     }
+    public Client(){
+
+    }
 
 
     public String getNom() {

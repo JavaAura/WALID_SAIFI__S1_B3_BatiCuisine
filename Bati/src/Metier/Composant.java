@@ -16,9 +16,7 @@ public class Composant {
             this.tauxTVA = tauxTVA;
         }
 
-        public double calculerCoutTotal() {
-            return coutUnitaire * quantite * (1 + tauxTVA / 100);
-        }
+
 
     public String getNom() {
         return nom;
