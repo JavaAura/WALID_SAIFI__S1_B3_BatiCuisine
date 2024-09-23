@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS Materiau;
 DROP TABLE IF EXISTS Projet;
 DROP TABLE IF EXISTS Client;
 
--- Création de la table Client avec estProfessionnel par défaut à FALSE
+
 CREATE TABLE Client (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,

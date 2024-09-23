@@ -14,6 +14,7 @@ public class Client {
         this.estProfessionnel = estProfessionnel;
     }
 
+
     public String getNom() {
         return this.nom;
     }
