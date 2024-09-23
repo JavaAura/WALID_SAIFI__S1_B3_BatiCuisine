@@ -11,6 +11,10 @@ public class MainOeuvre extends Composant{
         super(nom, coutUnitaire, quantite, typeComposant, tauxTVA);
     }
 
+    public MainOeuvre() {
+        super();
+    }
+
     public double getTauxHoraire() {
         return tauxHoraire;
     }
