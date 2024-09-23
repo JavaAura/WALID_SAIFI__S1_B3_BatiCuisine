@@ -2,6 +2,7 @@
 package Metier;
 
 public class Client {
+    private  long id;
     private String nom;
     private String adresse;
     private String telephone;
@@ -49,4 +50,9 @@ public class Client {
     public void setEstProfessionnel(boolean estProfessionnel) {
         this.estProfessionnel = estProfessionnel;
     }
+
+    public long getId() {
+        return id;
+    }
+
 }

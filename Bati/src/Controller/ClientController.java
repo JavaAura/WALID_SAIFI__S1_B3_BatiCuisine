@@ -4,7 +4,7 @@ import Metier.Client;
 import Service.ClientService;
 
 public class ClientController {
-    private final ClientService clientService;
+    private  ClientService clientService;
 
 
 

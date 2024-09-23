@@ -10,6 +10,10 @@ public class Projet{
     private Client client;
     private List<Composant> composants;
 
+    public  Projet(){
+
+    }
+
     public String getNomProjet() {
         return nomProjet;
     }
@@ -68,4 +72,6 @@ public class Projet{
     }
 
 
+    public void setId(long id) {
+    }
 }

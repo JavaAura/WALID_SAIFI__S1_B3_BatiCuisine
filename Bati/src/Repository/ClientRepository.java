@@ -51,7 +51,7 @@ public class ClientRepository implements IClientRepository {
                 String telephone = rs.getString("telephone");
                 boolean estProfessionnel = rs.getBoolean("estProfessionnel");
 
-                // Créer l'objet Client avec les informations récupérées
+
                 client = new Client(adresse, nom, telephone, estProfessionnel);
             } else {
                 System.out.println("Aucun client trouvé avec l'ID : " + id);
@@ -63,6 +63,8 @@ public class ClientRepository implements IClientRepository {
 
         return client;
     }
+
+
 
 
 
