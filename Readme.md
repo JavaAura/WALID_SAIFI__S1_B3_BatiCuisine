@@ -60,6 +60,7 @@ Bati-Cuisine est une application Java destinée aux professionnels de la constru
     - `dateValidite` (Date): Date de validité du devis.
     - `accepte` (boolean): Indique si le devis a été accepté par le client.
 
+
 ### 5. Calcul des Coûts
 - Intégrer les coûts des composants (matériaux, main-d'œuvre) dans le calcul du coût total du projet.
 - Appliquer une marge bénéficiaire pour obtenir le coût final du projet.
