@@ -29,7 +29,7 @@ public class MaterielRepository implements  IMaterielRepository{
             stmt.setDouble(5, materiel.getTauxTVA());
             stmt.setDouble(6, materiel.getCoutTransport());
             stmt.setDouble(7, materiel.getCoefficientQualite());
-            stmt.setInt(8,materiel.getProjet().getId());
+            stmt.setLong(8,materiel.getProjet().getId());
 
 
             stmt.executeUpdate();

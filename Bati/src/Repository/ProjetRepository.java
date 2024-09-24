@@ -1,6 +1,7 @@
 package Repository;
 
 import Metier.Projet;
+import Metier.EtatProjet; // Import de l'énumération
 import util.DBConnection;
 
 import java.sql.Connection;
@@ -23,7 +24,7 @@ public class ProjetRepository implements IProjetRepository {
             stmt.setString(1, projet.getNomProjet());
             stmt.setDouble(2, projet.getMargeBeneficiaire());
             stmt.setDouble(3, projet.getCoutTotal());
-            stmt.setString(4, projet.getEtatProjet());
+            stmt.setString(4, projet.getEtatProjet().name());
             stmt.setLong(5, projet.getClient().getId());
 
             stmt.executeUpdate();
@@ -49,8 +50,8 @@ public class ProjetRepository implements IProjetRepository {
                 projet.setNomProjet(rs.getString("nomProjet"));
                 projet.setMargeBeneficiaire(rs.getDouble("margeBeneficiaire"));
                 projet.setCoutTotal(rs.getDouble("coutTotal"));
-                projet.setEtatProjet(rs.getString("etatProjet"));
-                // Ajouter ici l'objet Client si nécessaire
+                projet.setEtatProjet(EtatProjet.valueOf(rs.getString("etatProjet")));
+
                 projets.add(projet);
             }
 
@@ -78,8 +79,8 @@ public class ProjetRepository implements IProjetRepository {
                     projet.setNomProjet(rs.getString("nomProjet"));
                     projet.setMargeBeneficiaire(rs.getDouble("margeBeneficiaire"));
                     projet.setCoutTotal(rs.getDouble("coutTotal"));
-                    projet.setEtatProjet(rs.getString("etatProjet"));
-                    // Ajouter ici l'objet Client si nécessaire
+                    projet.setEtatProjet(EtatProjet.valueOf(rs.getString("etatProjet")));
+
                 }
             }
 
@@ -107,8 +108,7 @@ public class ProjetRepository implements IProjetRepository {
                     projet.setNomProjet(rs.getString("nomProjet"));
                     projet.setMargeBeneficiaire(rs.getDouble("margeBeneficiaire"));
                     projet.setCoutTotal(rs.getDouble("coutTotal"));
-                    projet.setEtatProjet(rs.getString("etatProjet"));
-
+                    projet.setEtatProjet(EtatProjet.valueOf(rs.getString("etatProjet")));
                 }
             }
 

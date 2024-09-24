@@ -2,8 +2,8 @@ package Metier;
 
 import java.util.List;
 
-public class Projet{
-    private  int id;
+public class Projet {
+    private long id;
     private String nomProjet;
     private double margeBeneficiaire;
     private double coutTotal;
@@ -11,18 +11,24 @@ public class Projet{
     private Client client;
     private List<Composant> composants;
 
-    public int getId() {
+    public Projet() {
+    }
+
+    public Projet(String nomProjet, List<Composant> composants, Client client, double coutTotal, double margeBeneficiaire, EtatProjet etatProjet) {
+        this.nomProjet = nomProjet;
+        this.composants = composants;
+        this.client = client;
+        this.coutTotal = coutTotal;
+        this.margeBeneficiaire = margeBeneficiaire;
+        this.etatProjet = etatProjet;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-
-
-    public  Projet(){
-
     }
 
     public String getNomProjet() {
@@ -65,26 +71,11 @@ public class Projet{
         this.margeBeneficiaire = margeBeneficiaire;
     }
 
-
     public EtatProjet getEtatProjet() {
         return etatProjet;
     }
 
     public void setEtatProjet(EtatProjet etatProjet) {
         this.etatProjet = etatProjet;
-    }
-
-    public Projet(String nomProjet, List<Composant> composants, Client client, double coutTotal, double margeBeneficiaire, EtatProjet etatProjet) {
-        this.nomProjet = nomProjet;
-        this.composants = composants;
-        this.client = client;
-        this.coutTotal = coutTotal;
-        this.margeBeneficiaire = margeBeneficiaire;
-        this.etatProjet = etatProjet;
-
-    }
-
-
-    public void setId(long id) {
     }
 }

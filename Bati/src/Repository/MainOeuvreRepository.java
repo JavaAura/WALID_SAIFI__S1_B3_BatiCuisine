@@ -27,7 +27,7 @@ public class MainOeuvreRepository implements  IMainOeuvreRepository{
             stmt.setDouble(3, mainOeuvre.getHeuresTravail());
             stmt.setDouble(4, mainOeuvre.getProductiviteOuvrier());
             stmt.setDouble(5, mainOeuvre.getTauxTVA());
-            stmt.setInt(6, mainOeuvre.getProjet().getId());
+            stmt.setLong(6, mainOeuvre.getProjet().getId());
 
 
 
