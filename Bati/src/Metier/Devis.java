@@ -1,16 +1,20 @@
 package Metier;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Devis {
 
     private int id;
     private double montantEstime;
-    private Date dateEmission;
-    private Date dateValidite;
+    private LocalDate dateEmission;
+    private LocalDate dateValidite;
     private boolean accepte;
+    private Projet projet;
+    private double tva;
+    private double margeBeneficiaire;
 
-    public Devis(int id, double margeBeneficiaire, Projet projet, Date dateValidite, Date dateEmission, double montantEstime, boolean accepte, double tva) {
+    // Constructeur avec tous les paramètres
+    public Devis(int id, double margeBeneficiaire, Projet projet, LocalDate dateValidite, LocalDate dateEmission, double montantEstime, boolean accepte, double tva) {
         this.id = id;
         this.margeBeneficiaire = margeBeneficiaire;
         this.projet = projet;
@@ -21,6 +25,7 @@ public class Devis {
         this.tva = tva;
     }
 
+    // Getters et Setters
     public int getId() {
         return id;
     }
@@ -61,19 +66,19 @@ public class Devis {
         this.accepte = accepte;
     }
 
-    public Date getDateValidite() {
+    public LocalDate getDateValidite() {
         return dateValidite;
     }
 
-    public void setDateValidite(Date dateValidite) {
+    public void setDateValidite(LocalDate dateValidite) {
         this.dateValidite = dateValidite;
     }
 
-    public Date getDateEmission() {
+    public LocalDate getDateEmission() {
         return dateEmission;
     }
 
-    public void setDateEmission(Date dateEmission) {
+    public void setDateEmission(LocalDate dateEmission) {
         this.dateEmission = dateEmission;
     }
 
@@ -84,8 +89,4 @@ public class Devis {
     public void setMontantEstime(double montantEstime) {
         this.montantEstime = montantEstime;
     }
-
-    private Projet projet;
-    private double tva;
-    private double margeBeneficiaire;
 }
