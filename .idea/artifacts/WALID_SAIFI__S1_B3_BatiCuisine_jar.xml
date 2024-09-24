@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="WALID_SAIFI__S1_B3_BatiCuisine:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/WALID_SAIFI__S1_B3_BatiCuisine_jar</output-path>
+    <root id="archive" name="WALID_SAIFI__S1_B3_BatiCuisine.jar">
+      <element id="module-output" name="WALID_SAIFI__S1_B3_BatiCuisine" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/postgresql-42.7.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
