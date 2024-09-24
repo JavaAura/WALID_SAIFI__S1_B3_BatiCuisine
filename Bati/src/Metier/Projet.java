@@ -78,4 +78,8 @@ public class Projet {
     public void setEtatProjet(EtatProjet etatProjet) {
         this.etatProjet = etatProjet;
     }
+
+    public void setNom(String nomProjet) {
+        this.nomProjet = nomProjet;
+    }
 }
