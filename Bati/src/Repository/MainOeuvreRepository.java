@@ -14,7 +14,7 @@ public class MainOeuvreRepository implements  IMainOeuvreRepository{
 
 
     @Override
-    public void ajouterMainOeuvre(MainOeuvre mainOeuvre, int idProject) {
+    public void ajouterMainOeuvre(MainOeuvre mainOeuvre) {
         String sql = "INSERT INTO MainOeuvre (nom, tauxHoraire, heuresTravail, productiviteOuvrier, tauxTVA, projetId) "
                 + "VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -27,7 +27,7 @@ public class MainOeuvreRepository implements  IMainOeuvreRepository{
             stmt.setDouble(3, mainOeuvre.getHeuresTravail());
             stmt.setDouble(4, mainOeuvre.getProductiviteOuvrier());
             stmt.setDouble(5, mainOeuvre.getTauxTVA());
-            stmt.setInt(6, idProject);
+            stmt.setInt(6, mainOeuvre.getProjet().getId());
 
 
 

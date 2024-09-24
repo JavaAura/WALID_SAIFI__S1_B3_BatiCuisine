@@ -3,9 +3,19 @@ package Metier;
 import java.util.List;
 
 public class Projet{
+    private  int id;
     private String nomProjet;
     private double margeBeneficiaire;
     private double coutTotal;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String etatProjet;
     private Client client;
     private List<Composant> composants;

@@ -7,9 +7,18 @@ public class Composant {
         private double quantite;
         private String typeComposant;
         private double tauxTVA;
+        private Projet projet;
 
     public Composant() {
 
+    }
+
+    public Projet getProjet() {
+        return projet;
+    }
+
+    public void setProjet(Projet projet) {
+        this.projet = projet;
     }
 
     public int getId() {

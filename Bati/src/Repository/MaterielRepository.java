@@ -14,7 +14,7 @@ import java.util.List;
 public class MaterielRepository implements  IMaterielRepository{
 
     @Override
-    public void ajouterMateriel(Materiel materiel, int id) {
+    public void ajouterMateriel(Materiel materiel) {
         String sql = "INSERT INTO Materiau (nom, coutUnitaire, quantite, typeComposant, tauxTVA, coutTransport, coefficientQualite, projetId) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -29,7 +29,7 @@ public class MaterielRepository implements  IMaterielRepository{
             stmt.setDouble(5, materiel.getTauxTVA());
             stmt.setDouble(6, materiel.getCoutTransport());
             stmt.setDouble(7, materiel.getCoefficientQualite());
-            stmt.setInt(8, id); // Utilisation de id pour l'insertion dans projetId
+            stmt.setInt(8,materiel.getProjet().getId());
 
 
             stmt.executeUpdate();
@@ -62,7 +62,7 @@ public class MaterielRepository implements  IMaterielRepository{
                 materiel.setTauxTVA(rs.getDouble("tauxTVA"));
                 materiel.setCoutTransport(rs.getDouble("coutTransport"));
                 materiel.setCoefficientQualite(rs.getDouble("coefficientQualite"));
-                
+
                 materiaux.add(materiel);
             }
 
