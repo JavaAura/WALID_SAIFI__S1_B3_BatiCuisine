@@ -4,6 +4,7 @@ import Controller.ComposantController;
 import Controller.DevisController;
 import Controller.ProjetController;
 import Metier.Client;
+import Metier.Projet;
 
 import  java.util.*;
 
@@ -17,12 +18,7 @@ public class ConsoleUI {
 
 
     private final Map<Long, Client> clientCache = new HashMap<>();
-    public ConsoleUI() {
-        this.projetController = new ProjetController(); // Initialisez avec des instances par défaut
-        this.devisController = new DevisController();   // Assurez-vous que ces classes ont un constructeur par défaut
-        this.clientController = new ClientController();  // Sinon, vous devez gérer les paramètres
-        this.composantController = new ComposantController();
-    }
+
 
     public ConsoleUI(ProjetController projetController, DevisController devisController,
                      ClientController clientController, ComposantController composant) {
@@ -71,47 +67,37 @@ public class ConsoleUI {
         scanner.close();
     }
 
-    public  void creerNouveauProjet(Scanner scanner) {
-        scanner.nextLine();
 
-        System.out.println("--- Création d'un Nouveau Projet ---");
-        System.out.print("Entrez le nom du projet: ");
-        String nomProjet = scanner.nextLine();
-
-        System.out.print("Entrez la marge bénéficiaire (%): ");
-        double margeBeneficiaire = scanner.nextDouble();
-
-        System.out.print("Entrez la surface de la cuisine (en m²): ");
-        double surface = scanner.nextDouble();
-
-        //   Projet projet = new Projet(nomProjet, margeBeneficiaire, surface);
-
-        boolean ajouterMateriaux = true;
-        while (ajouterMateriaux) {
-
-            System.out.print("Voulez-vous ajouter un autre matériau ? (y/n): ");
-            ajouterMateriaux = scanner.next().equalsIgnoreCase("y");
-        }
-
-
-    }
-    public void getClient(Scanner scanner) {
+    public Client getClient(Scanner scanner) {
         System.out.println("Souhaitez-vous chercher un client existant ou en ajouter un nouveau ?");
         System.out.println("1. Chercher un client existant\n2. Ajouter un nouveau client\nChoisissez une option : ");
-        int choixClient = scanner.nextInt();
 
+        int choixClient;
+        while (true) {
+            try {
+                choixClient = Integer.parseInt(scanner.nextLine());
+                if (choixClient == 1 || choixClient == 2) {
+                    break;
+                } else {
+                    System.out.println("Choix invalide. Veuillez entrer 1 ou 2.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un nombre valide.");
+            }
+        }
+
+        Client client = null;
         if (choixClient == 1) {
             System.out.print("Entrez le nom du client à rechercher: ");
-            scanner.nextLine();
             String nomClient = scanner.nextLine();
-            Client client = clientController.getClientByName(nomClient);
+            client = clientController.getClientByName(nomClient);
             if (client != null) {
                 System.out.println("Client trouvé: " + client.toString());
+                return client;
             } else {
                 System.out.println("Client non trouvé.");
             }
         } else if (choixClient == 2) {
-            scanner.nextLine();
             System.out.print("Entrez le nom du nouveau client: ");
             String nomClient = scanner.nextLine();
 
@@ -124,18 +110,72 @@ public class ConsoleUI {
             System.out.println("Sélectionnez le type de client :");
             System.out.println("1. Client Professionnel");
             System.out.println("2. Client Particulier");
+
             boolean estProfessionnel = false;
-            int typeClient = scanner.nextInt();
-             if(typeClient == 1){
-                 estProfessionnel = true;
-             }if(typeClient == 2){
-                 estProfessionnel = false;
+            int typeClient;
+
+            while (true) {
+                try {
+                    typeClient = Integer.parseInt(scanner.nextLine());
+                    if (typeClient == 1) {
+                        estProfessionnel = true;
+                        break;
+                    } else if (typeClient == 2) {
+                        estProfessionnel = false;
+                        break;
+                    } else {
+                        System.out.println("Choix invalide. Veuillez entrer 1 ou 2.");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Veuillez entrer un nombre valide.");
+                }
             }
-            clientController.ajouterClient(adresse,nomClient,telephone,estProfessionnel);
+
+            client = new Client(adresse, nomClient, telephone, estProfessionnel);
+            clientController.ajouterClient(adresse, nomClient, telephone, estProfessionnel);
             System.out.println("Client ajouté");
-        } else {
-            System.out.println("Choix invalide.");
         }
+
+        return client;
     }
+
+
+
+
+
+    public void creerNouveauProjet(Scanner scanner) {
+        System.out.println("--- Recherche de client ---");
+        Client client = getClient(scanner); // Assurez-vous que getClient renvoie le client
+        scanner.nextLine(); // Consomme la ligne restante après l'appel de getClient
+
+        System.out.println("--- Création d'un Nouveau Projet ---");
+        System.out.print("Entrez le nom du projet: ");
+        String nomProjet = scanner.nextLine();
+
+        System.out.print("Entrez la marge bénéficiaire (%): ");
+        double margeBeneficiaire = scanner.nextDouble();
+
+        System.out.print("Entrez la surface de la cuisine (en m²): ");
+        double surface = scanner.nextDouble();
+
+
+       // Projet projet = new Projet(nomProjet, margeBeneficiaire, surface);
+
+
+        boolean ajouterMateriaux = true;
+        while (ajouterMateriaux) {
+            System.out.print("Voulez-vous ajouter un matériau ? (y/n): ");
+            ajouterMateriaux = scanner.next().equalsIgnoreCase("y");
+            if (ajouterMateriaux) {
+                System.out.print("Entrez le nom du matériau: ");
+                String nomMateriau = scanner.next();
+
+            }
+        }
+
+
+        System.out.println("Projet créé avec succès !");
+    }
+
 
 }
