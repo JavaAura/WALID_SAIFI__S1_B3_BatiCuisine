@@ -1,4 +1,3 @@
-
 -- Suppression des tables dans le bon ordre
 DROP TABLE IF EXISTS Devis;
 DROP TABLE IF EXISTS MainOeuvre;
@@ -6,7 +5,7 @@ DROP TABLE IF EXISTS Materiau;
 DROP TABLE IF EXISTS Projet;
 DROP TABLE IF EXISTS Client;
 
-
+-- Création de la table Client
 CREATE TABLE Client (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
@@ -21,11 +20,11 @@ CREATE TABLE Projet (
     nomProjet VARCHAR(255) NOT NULL,
     margeBeneficiaire DOUBLE PRECISION NOT NULL,
     coutTotal DOUBLE PRECISION,
-    etatProjet VARCHAR(50) NOT NULL,
+    etatProjet VARCHAR(50) NOT NULL CHECK (etatProjet IN ('EN_COURS', 'TERMINE', 'ANNULE')),
     clientId INT REFERENCES Client(id) ON DELETE CASCADE
 );
 
--- Création de la table Matériau
+-- Création de la table Materiau
 CREATE TABLE Materiau (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,
@@ -38,7 +37,7 @@ CREATE TABLE Materiau (
     projetId INT REFERENCES Projet(id) ON DELETE CASCADE
 );
 
--- Création de la table Main-d'oeuvre
+-- Création de la table MainOeuvre
 CREATE TABLE MainOeuvre (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(255) NOT NULL,

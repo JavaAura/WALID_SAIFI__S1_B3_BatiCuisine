@@ -7,7 +7,7 @@ public class Projet{
     private String nomProjet;
     private double margeBeneficiaire;
     private double coutTotal;
-    private String etatProjet;
+    private EtatProjet etatProjet;
     private Client client;
     private List<Composant> composants;
 
@@ -65,21 +65,23 @@ public class Projet{
         this.margeBeneficiaire = margeBeneficiaire;
     }
 
-    public String getEtatProjet() {
+
+    public EtatProjet getEtatProjet() {
         return etatProjet;
     }
 
-    public void setEtatProjet(String etatProjet) {
+    public void setEtatProjet(EtatProjet etatProjet) {
         this.etatProjet = etatProjet;
     }
 
-    public Projet(String nomProjet, List<Composant> composants, Client client, double coutTotal, double margeBeneficiaire) {
+    public Projet(String nomProjet, List<Composant> composants, Client client, double coutTotal, double margeBeneficiaire, EtatProjet etatProjet) {
         this.nomProjet = nomProjet;
         this.composants = composants;
         this.client = client;
-        this.etatProjet = "EN_COURS";
         this.coutTotal = coutTotal;
         this.margeBeneficiaire = margeBeneficiaire;
+        this.etatProjet = etatProjet;
+
     }
 
 

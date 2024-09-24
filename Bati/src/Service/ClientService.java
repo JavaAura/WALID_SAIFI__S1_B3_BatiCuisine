@@ -6,7 +6,8 @@ import Metier.Client;
 import java.util.List;
 
 public class ClientService  implements  IClientService{
-    private ClientRepository Clientad;
+
+    private final ClientRepository Clientad;
 
 
     public ClientService() {
@@ -21,17 +22,17 @@ public class ClientService  implements  IClientService{
     }
 
     @Override
-    public Client getClientById(Long id) {
-        return null;
+    public Client getClientById(long id) {
+       return Clientad.getClientById(id);
     }
 
     @Override
     public Client getClientByName(String name) {
-        return null;
+        return Clientad.getClientByName(name);
     }
 
     @Override
     public List<Client> getAllClients() {
-        return List.of();
+        return  Clientad.getAllClients();
     }
 }
