@@ -8,7 +8,15 @@ public class Client {
     private String telephone;
     private boolean estProfessionnel;
 
-    public Client(String adresse, String nom, String telephone, boolean estProfessionnel) {
+    public Client(long id , String adresse, String nom, String telephone, boolean estProfessionnel) {
+        this.id = id;
+        this.adresse = adresse;
+        this.nom = nom;
+        this.telephone = telephone;
+        this.estProfessionnel = estProfessionnel;
+    }
+
+    public Client( String adresse, String nom, String telephone, boolean estProfessionnel) {
         this.adresse = adresse;
         this.nom = nom;
         this.telephone = telephone;

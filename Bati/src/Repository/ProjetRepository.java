@@ -14,7 +14,7 @@ public class ProjetRepository implements IProjetRepository {
 
     @Override
     public void ajouterProjet(Projet projet) {
-        String sql = "INSERT INTO Projet (nomProjet, margeBeneficiaire, coutTotal, etatProjet, client_id) "
+        String sql = "INSERT INTO Projet (nomProjet, margeBeneficiaire, coutTotal, etatProjet, clientid) "
                 + "VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.connect();

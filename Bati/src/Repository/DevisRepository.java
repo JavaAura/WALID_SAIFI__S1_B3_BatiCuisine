@@ -44,7 +44,7 @@ public class DevisRepository implements IDevisRepository {
 
     @Override
     public Devis trouverParProjetId(Long projetId) {
-      
+
         return null;
     }
 }

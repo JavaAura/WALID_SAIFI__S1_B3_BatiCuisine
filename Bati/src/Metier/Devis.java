@@ -13,7 +13,7 @@ public class Devis {
     private double tva;
     private double margeBeneficiaire;
 
-    // Constructeur avec tous les paramètres
+
     public Devis(int id, double margeBeneficiaire, Projet projet, LocalDate dateValidite, LocalDate dateEmission, double montantEstime, boolean accepte, double tva) {
         this.id = id;
         this.margeBeneficiaire = margeBeneficiaire;
@@ -25,7 +25,7 @@ public class Devis {
         this.tva = tva;
     }
 
-    // Getters et Setters
+
     public int getId() {
         return id;
     }

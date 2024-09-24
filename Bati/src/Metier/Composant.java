@@ -38,6 +38,14 @@ public class Composant {
         }
 
 
+    public Composant(int id,String nom, double coutUnitaire, double quantite, String typeComposant, double tauxTVA) {
+        this.id =id;
+        this.nom = nom;
+        this.coutUnitaire = coutUnitaire;
+        this.quantite = quantite;
+        this.typeComposant = typeComposant;
+        this.tauxTVA = tauxTVA;
+    }
 
     public String getNom() {
         return nom;

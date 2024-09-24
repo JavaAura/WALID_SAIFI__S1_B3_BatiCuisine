@@ -35,7 +35,7 @@ public class ClientRepository implements IClientRepository {
 
 
     @Override
-    public Client getClientById(Long id) {
+    public Client getClientById(int id) {
         String sql = "SELECT * FROM Client WHERE id = ?";
         Client client = null;
 
@@ -46,13 +46,14 @@ public class ClientRepository implements IClientRepository {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
+                long Id = rs.getLong("id");
                 String nom = rs.getString("nom");
                 String adresse = rs.getString("adresse");
                 String telephone = rs.getString("telephone");
                 boolean estProfessionnel = rs.getBoolean("estProfessionnel");
 
 
-                client = new Client(adresse, nom, telephone, estProfessionnel);
+                client = new Client(Id,adresse, nom, telephone, estProfessionnel);
             } else {
                 System.out.println("Aucun client trouvé avec l'ID : " + id);
             }
@@ -60,7 +61,7 @@ public class ClientRepository implements IClientRepository {
         } catch (SQLException e) {
             System.err.println("Erreur lors de la récupération du client : " + e.getMessage());
         }
-
+        System.out.println(client.getId());
         return client;
     }
 

@@ -7,6 +7,9 @@ public class Projet{
     private String nomProjet;
     private double margeBeneficiaire;
     private double coutTotal;
+    private String etatProjet;
+    private Client client;
+    private List<Composant> composants;
 
     public int getId() {
         return id;
@@ -16,9 +19,7 @@ public class Projet{
         this.id = id;
     }
 
-    private String etatProjet;
-    private Client client;
-    private List<Composant> composants;
+
 
     public  Projet(){
 

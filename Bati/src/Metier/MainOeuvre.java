@@ -10,6 +10,9 @@ public class MainOeuvre extends Composant{
     public MainOeuvre(String nom, double coutUnitaire, double quantite, String typeComposant, double tauxTVA) {
         super(nom, coutUnitaire, quantite, typeComposant, tauxTVA);
     }
+    public MainOeuvre(int id,String nom, double coutUnitaire, double quantite, String typeComposant, double tauxTVA) {
+        super(id,nom, coutUnitaire, quantite, typeComposant, tauxTVA);
+    }
 
     public MainOeuvre() {
         super();
@@ -38,4 +41,6 @@ public class MainOeuvre extends Composant{
     public void setHeuresTravail(double heuresTravail) {
         this.heuresTravail = heuresTravail;
     }
+
+
 }
