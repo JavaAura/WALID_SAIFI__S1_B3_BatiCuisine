@@ -5,34 +5,32 @@ import Metier.Client;
 
 import java.util.List;
 
-public class ClientService  implements  IClientService{
+public class ClientService implements IClientService {
 
-    private final ClientRepository Clientad;
-
+    private ClientRepository clientRepository;  // Utilisez un nom cohérent en minuscules
 
     public ClientService() {
-
-        this.Clientad = new ClientRepository();
+        this.clientRepository = new ClientRepository();
     }
 
-
     @Override
-    public void ajouterClient(Client client) {
-        Clientad.ajouterClient(client);
+    public Client ajouterClient(Client client) {
+        System.out.println(client.getNom());
+        return clientRepository.ajouterClient(client);
     }
 
     @Override
     public Client getClientById(long id) {
-       return Clientad.getClientById(id);
+        return clientRepository.getClientById(id);
     }
 
     @Override
     public Client getClientByName(String name) {
-        return Clientad.getClientByName(name);
+        return clientRepository.getClientByName(name);
     }
 
     @Override
     public List<Client> getAllClients() {
-        return  Clientad.getAllClients();
+        return clientRepository.getAllClients();
     }
 }

@@ -1,4 +1,3 @@
-
 package Metier;
 
 public class Client {
@@ -24,6 +23,14 @@ public class Client {
     }
     public Client(){
 
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }       
+
+    public long getId(){
+        return  this.id;
     }
 
 
@@ -59,8 +66,16 @@ public class Client {
         this.estProfessionnel = estProfessionnel;
     }
 
-    public long getId() {
-        return id;
+
+    @Override
+    public String toString() {
+        return "Client\n" +
+                "id=" + id +
+                "\nnom='" + nom + '\'' +
+                "\nadresse='" + adresse + '\'' +
+                "\ntelephone='" + telephone + '\'' +
+                "\nestProfessionnel=" + estProfessionnel;
     }
+
 
 }

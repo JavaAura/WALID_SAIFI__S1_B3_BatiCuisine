@@ -14,12 +14,12 @@ import java.util.List;
 public class ProjetRepository implements IProjetRepository {
 
     @Override
-    public void ajouterProjet(Projet projet) {
+    public Projet ajouterProjet(Projet projet) {
         String sql = "INSERT INTO Projet (nomProjet, margeBeneficiaire, coutTotal, etatProjet, clientid) "
                 + "VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.connect();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, projet.getNomProjet());
             stmt.setDouble(2, projet.getMargeBeneficiaire());
@@ -27,12 +27,29 @@ public class ProjetRepository implements IProjetRepository {
             stmt.setString(4, projet.getEtatProjet().name());
             stmt.setLong(5, projet.getClient().getId());
 
-            stmt.executeUpdate();
-            System.out.println("Projet ajouté avec succès !");
+            int affectedRows = stmt.executeUpdate();
+
+            if (affectedRows == 0) {
+                throw new SQLException("L'ajout du projet a échoué, aucune ligne affectée.");
+            }
+
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    projet.setId(generatedKeys.getLong(1));
+                  //  System.out.println("ID du projet ajouté : " + projet.getId());
+                } else {
+                    throw new SQLException("L'ajout du projet a réussi, mais impossible de récupérer l'ID.");
+                }
+            }
+
+          //  System.out.println("Projet ajouté avec succès !");
 
         } catch (SQLException e) {
             System.err.println("Erreur lors de l'ajout du projet : " + e.getMessage());
+            return null;
         }
+
+        return projet;
     }
 
     @Override

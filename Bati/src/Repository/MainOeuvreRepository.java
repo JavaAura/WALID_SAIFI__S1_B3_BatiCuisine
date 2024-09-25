@@ -12,6 +12,10 @@ import java.util.List;
 
 public class MainOeuvreRepository implements  IMainOeuvreRepository{
 
+    public MainOeuvreRepository() {
+        super();
+    }
+
 
     @Override
     public void ajouterMainOeuvre(MainOeuvre mainOeuvre) {
@@ -43,7 +47,8 @@ public class MainOeuvreRepository implements  IMainOeuvreRepository{
     @Override
     public List<MainOeuvre> getAllComposantsByProject(Long projectId) {
         List<MainOeuvre> mainOeuvres = new ArrayList<>();
-        String sql = "SELECT * FROM MainOeuvre WHERE projetId = ?";
+        return mainOeuvres;
+  /*      String sql = "SELECT * FROM MainOeuvre WHERE projetId = ?";
         try (Connection conn = DBConnection.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -68,7 +73,7 @@ public class MainOeuvreRepository implements  IMainOeuvreRepository{
             e.printStackTrace();
         }
 
-        return mainOeuvres;
+        return mainOeuvres; */
     }
 
 

@@ -7,18 +7,18 @@ import java.util.List;
 
 public class ProjetService implements  IProjetService{
 
-    private final  ProjetRepository projetRepository;
+    private   ProjetRepository projetRepository;
 
-    public  ProjetService(ProjetRepository projetRepository){
+    public  ProjetService(){
 
-        this.projetRepository = projetRepository;
+        this.projetRepository = new ProjetRepository();
     }
 
 
 
     @Override
-    public void ajouterProjet(Projet projet) {
-        projetRepository.ajouterProjet(projet);
+    public Projet ajouterProjet(Projet projet) {
+        return projetRepository.ajouterProjet(projet);
 
     }
 

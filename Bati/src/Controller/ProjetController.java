@@ -5,47 +5,48 @@ import Metier.EtatProjet;
 import Metier.Projet;
 import Service.ProjetService;
 
+import java.util.List;
+
 
 public class ProjetController {
-    private final ProjetService projetService;
-    private final ClientController clientController;
+    private  ProjetService projetService;
+    private  ClientController clientController;
 
     public ProjetController(ProjetService projetService, ClientController clientController) {
         this.projetService = projetService;
         this.clientController = clientController;
     }
 
+    public ProjetController() {
+        this.projetService = new ProjetService();
+        
+    }
 
-    public Projet creerProjet(String nomProjet, double margeBeneficiaire, String nomClient, String adresseClient,
-                              String telephoneClient, boolean estProfessionnel) {
-
-
-        Client clientExistant = clientController.getClientByName(nomClient);
-
-
-        if (clientExistant == null) {
-            clientController.ajouterClient(adresseClient, nomClient, telephoneClient, estProfessionnel);
-            clientExistant = clientController.getClientByName(nomClient);
-
-
-            if (clientExistant == null) {
-                System.out.println("Erreur : La création du client a échoué. Impossible d'associer le client au projet.");
-                return null;
-            }
-        }
-
-
-        Projet projet = new Projet();
-        projet.setNom(nomProjet);
-        projet.setClient(clientExistant);
-        projet.setEtatProjet(EtatProjet.EN_COURS);
-        projet.setMargeBeneficiaire(margeBeneficiaire);
-
+    public Projet creerProjet(Projet projet) {
         projetService.ajouterProjet(projet);
-
         return projet;
     }
-}
+
+    public List<Projet> obtenirTousLesProjets(){
+        return projetService.obtenirTousLesProjets();
+    }
+
+    public  Projet obtenirProjetParNom(String nomProjet){
+
+        return  projetService.obtenirProjetParNom(nomProjet);
+    }
+
+
+
+
+   
+
+
+
+ }
+
+
+
 
 
 

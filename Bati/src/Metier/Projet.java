@@ -1,26 +1,34 @@
 package Metier;
 
-import java.util.List;
 
 public class Projet {
     private long id;
     private String nomProjet;
+    private double surface;
     private double margeBeneficiaire;
     private double coutTotal;
     private EtatProjet etatProjet;
     private Client client;
-    private List<Composant> composants;
 
-    public Projet() {
-    }
-
-    public Projet(String nomProjet, List<Composant> composants, Client client, double coutTotal, double margeBeneficiaire, EtatProjet etatProjet) {
+    public Projet (long id, String nomProjet,Double surface,Client client, double coutTotal, double margeBeneficiaire, EtatProjet etatProjet) {
+        this.id = id;
         this.nomProjet = nomProjet;
-        this.composants = composants;
+        this.surface = surface;
         this.client = client;
         this.coutTotal = coutTotal;
         this.margeBeneficiaire = margeBeneficiaire;
         this.etatProjet = etatProjet;
+    }
+
+    public Projet(String nomProjet,Double surface,Client client, double coutTotal, double margeBeneficiaire) {
+        this.nomProjet = nomProjet;
+        this.surface = surface;
+        this.client = client;
+        this.coutTotal = coutTotal;
+        this.margeBeneficiaire = margeBeneficiaire;
+        this.etatProjet = EtatProjet.EN_COURS;
+    }
+    public Projet() {
     }
 
     public long getId() {
@@ -37,14 +45,6 @@ public class Projet {
 
     public void setNomProjet(String nomProjet) {
         this.nomProjet = nomProjet;
-    }
-
-    public List<Composant> getComposants() {
-        return composants;
-    }
-
-    public void setComposants(List<Composant> composants) {
-        this.composants = composants;
     }
 
     public Client getClient() {
@@ -82,4 +82,17 @@ public class Projet {
     public void setNom(String nomProjet) {
         this.nomProjet = nomProjet;
     }
+
+    @Override
+    public String toString() {
+        return "Projet :" +
+                "\nid=" + id +
+                "\nnomProjet='" + nomProjet + '\'' +
+                "\nsurface=" + surface +
+                "\ncoutTotal=" + coutTotal +
+                "\nmargeBeneficiaire=" + margeBeneficiaire +
+                "\netatProjet=" + etatProjet +
+                "\nclient de ce projet: " + (client != null ? client.toString() : "Aucun client");
+    }
+
 }

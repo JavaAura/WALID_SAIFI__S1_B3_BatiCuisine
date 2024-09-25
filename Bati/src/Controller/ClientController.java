@@ -5,44 +5,28 @@ import Service.ClientService;
 
 public class ClientController {
 
-    private  ClientService clientService;
+    private ClientService clientService;
 
-
-    public ClientController(ClientService clientService) {
-
-        this.clientService = clientService;
+    public ClientController() {
+        this.clientService = new ClientService();
     }
 
-    public void ajouterClient(String adresse, String nom, String telephone, boolean estProfessionnel) {
+    public Client ajouterClient(Client client) {
 
-        Client client = new Client();
-        client.setAdresse(adresse);
-        client.setNom(nom);
-        client.setTelephone(telephone);
-        client.setEstProfessionnel(estProfessionnel);
-
-        double remise = 0.0;
-
-        if (estProfessionnel) {
-            remise = calculerRemiseProfessionnelle(client);
-            System.out.println("C'est un client professionnel. Remise appliquée : " + remise + "%");
-        } else {
-            System.out.println("C'est un client régulier.");
+        if (clientService == null) {
+            throw new IllegalStateException("ClientService n'a pas été initialisé.");
         }
-        clientService.ajouterClient(client);
-    }
 
-    private double calculerRemiseProfessionnelle(Client client) {
-        return 10.0;
+        Client clientajt = clientService.ajouterClient(client);
+        return clientajt;
     }
-
 
     public Client getClientById(Long id) {
         Client client = clientService.getClientById(id);
         if (client != null) {
-            System.out.println("Client nom trouvé ! : " + client.getNom());
+            System.out.println("Client trouvé ! : " + client.getNom());
         } else {
-            System.out.println("Aucun client trouvé avec le nom : " + id);
+            System.out.println("Aucun client trouvé avec l'ID : " + id);
         }
         return client;
     }
@@ -50,11 +34,10 @@ public class ClientController {
     public Client getClientByName(String name) {
         Client client = clientService.getClientByName(name);
         if (client != null) {
-            System.out.println("Client nom trouvé ! : " + client.getNom());
+            System.out.println("Client trouvé ! : " + client.getNom());
         } else {
             System.out.println("Aucun client trouvé avec le nom :" + name);
         }
         return client;
     }
-
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface IProjetRepository {
 
 
-    void ajouterProjet(Projet projet);
+    Projet ajouterProjet(Projet projet);
 
 
     List<Projet> obtenirTousLesProjets();

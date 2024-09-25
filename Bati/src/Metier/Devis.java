@@ -10,21 +10,14 @@ public class Devis {
     private LocalDate dateValidite;
     private boolean accepte;
     private Projet projet;
-    private double tva;
-    private double margeBeneficiaire;
 
-
-    public Devis(int id, double margeBeneficiaire, Projet projet, LocalDate dateValidite, LocalDate dateEmission, double montantEstime, boolean accepte, double tva) {
-        this.id = id;
-        this.margeBeneficiaire = margeBeneficiaire;
-        this.projet = projet;
-        this.dateValidite = dateValidite;
-        this.dateEmission = dateEmission;
+    public Devis(double montantEstime, LocalDate dateEmission, LocalDate dateValidite, boolean accepte, Projet projet) {
         this.montantEstime = montantEstime;
+        this.dateEmission = dateEmission;
+        this.dateValidite = dateValidite;
         this.accepte = accepte;
-        this.tva = tva;
+        this.projet = projet;
     }
-
 
     public int getId() {
         return id;
@@ -32,46 +25,14 @@ public class Devis {
 
     public void setId(int id) {
         this.id = id;
+    }       
+
+    public double getMontantEstime() {
+        return montantEstime;
     }
 
-    public double getMargeBeneficiaire() {
-        return margeBeneficiaire;
-    }
-
-    public void setMargeBeneficiaire(double margeBeneficiaire) {
-        this.margeBeneficiaire = margeBeneficiaire;
-    }
-
-    public double getTva() {
-        return tva;
-    }
-
-    public void setTva(double tva) {
-        this.tva = tva;
-    }
-
-    public Projet getProjet() {
-        return projet;
-    }
-
-    public void setProjet(Projet projet) {
-        this.projet = projet;
-    }
-
-    public boolean isAccepte() {
-        return accepte;
-    }
-
-    public void setAccepte(boolean accepte) {
-        this.accepte = accepte;
-    }
-
-    public LocalDate getDateValidite() {
-        return dateValidite;
-    }
-
-    public void setDateValidite(LocalDate dateValidite) {
-        this.dateValidite = dateValidite;
+    public void setMontantEstime(double montantEstime) {
+        this.montantEstime = montantEstime;
     }
 
     public LocalDate getDateEmission() {
@@ -82,11 +43,46 @@ public class Devis {
         this.dateEmission = dateEmission;
     }
 
-    public double getMontantEstime() {
-        return montantEstime;
+    public LocalDate getDateValidite() {
+        return dateValidite;
     }
 
-    public void setMontantEstime(double montantEstime) {
-        this.montantEstime = montantEstime;
+    public void setDateValidite(LocalDate dateValidite) {
+        this.dateValidite = dateValidite;
     }
+
+    public boolean isAccepte() {
+        return accepte;
+    }
+
+    public void setAccepte(boolean accepte) {
+        this.accepte = accepte;
+    }
+
+    public Projet getProjet() { 
+        return projet;
+    }
+    
+    public void setProjet(Projet projet) {
+        this.projet = projet;
+    }   
+
+    @Override
+    public String toString() {
+        return "Devis{" +
+                "id=" + id +
+                ", montantEstime=" + montantEstime +
+                ", dateEmission=" + dateEmission +
+                ", dateValidite=" + dateValidite +
+                ", accepte=" + accepte +
+                ", projet=" + projet +
+                '}';
+    }   
 }
+
+    
+    
+    
+    
+
+

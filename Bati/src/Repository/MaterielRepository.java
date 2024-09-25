@@ -13,6 +13,10 @@ import java.util.List;
 
 public class MaterielRepository implements  IMaterielRepository{
 
+    public MaterielRepository() {
+        super();
+    }
+
     @Override
     public void ajouterMateriel(Materiel materiel) {
         String sql = "INSERT INTO Materiau (nom, coutUnitaire, quantite, typeComposant, tauxTVA, coutTransport, coefficientQualite, projetId) "
@@ -44,7 +48,7 @@ public class MaterielRepository implements  IMaterielRepository{
     @Override
     public List<Materiel> getAllMaterieByProject(Long projectId) {
         List<Materiel> materiaux = new ArrayList<>();
-        String sql = "SELECT * FROM Materiau WHERE projetId = ?";
+      /*  String sql = "SELECT * FROM Materiau WHERE projetId = ?";
 
         try (Connection conn = DBConnection.connect();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -70,7 +74,8 @@ public class MaterielRepository implements  IMaterielRepository{
             System.err.println("Erreur lors de la récupération des matériaux par projet : " + e.getMessage());
         }
 
-        return materiaux;
+        return materiaux;*/
+        return null;
     }
 
 }

@@ -5,7 +5,7 @@ import Metier.Projet;
 import java.util.List;
 
 public interface IProjetService {
-    void ajouterProjet(Projet projet);
+    Projet ajouterProjet(Projet projet);
 
 
     List<Projet> obtenirTousLesProjets();
